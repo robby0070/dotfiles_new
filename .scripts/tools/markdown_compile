@@ -1,0 +1,12 @@
+#!/bin/bash
+file=$(readlink -f "$1")
+dir=$(dirname "$file")
+base="${file%.*}"
+
+pandoc "$file" --pdf-engine=xelatex \
+	-V 'mainfont:DejaVuSerif' \
+	-V 'mainfontoptions:Extension=.ttf, UprightFont=*, BoldFont=*-Bold, ItalicFont=*-Italic, BoldItalicFont=*-BoldItalic' \
+	-V 'sansfont:DejaVuSans.ttf' \
+	-V 'monofont:DejaVuSansMono.ttf' \
+	-V 'mathfont:texgyredejavu-math.otf' \	
+	-o "$base".pdf ;;

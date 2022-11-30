@@ -1,0 +1,4 @@
+#!/bin/bash
+
+browser-sync --server --files . &
+sass -w scss:styles . &

@@ -1,0 +1,8 @@
+#!/bin/bash
+
+DIRECTORY="$(pwd)/$1"
+DIRECTORY="${DIRECTORY%"${DIRECTORY##*[!/]}"}"
+DIR_NAME=${DIRECTORY##*/}
+
+cd $DIRECTORY
+tmux new-session -s $DIR_NAME "nvim"

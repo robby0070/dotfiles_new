@@ -1,0 +1,10 @@
+#!/bin/bash
+#FILENAME="$HOME/tmp/$(date +'%s_grim.png')"
+#grim -g "$(slurp)" "$FILENAME"
+#wl-copy < $FILENAME
+
+[ "$1" = "invert" ] && PARAMS="-channel RGB -negate"
+NAME="$HOME/tmp/screenshot_$(date +%s).png"
+#maim -sr boxzoom | convert - \( $PARAMS -bordercolor black -border 2x2 \) $NAME && \
+maim -s | convert - \( $PARAMS \) $NAME && \
+xclip  -selection clipboard -t image/png -i $NAME

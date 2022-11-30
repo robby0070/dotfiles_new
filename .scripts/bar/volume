@@ -1,0 +1,17 @@
+#!/bin/bash
+
+if [ "$(pulsemixer --get-mute)" = 1 ]; then
+	OUTPUT="\uf00d"
+else
+	NUMBER="$(pulsemixer --get-volume |  awk '{print $1;}')"
+	OUTPUT+="$NUMBER% "
+	if [ "$NUMBER" -le 33 ]; then
+		OUTPUT+="\uf026"
+	elif [ $NUMBER -le 66 ]; then
+		OUTPUT+="\uf027"
+	else
+		OUTPUT+="\uf028"
+	fi
+fi
+
+echo -e "$OUTPUT"

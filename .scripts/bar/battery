@@ -1,0 +1,18 @@
+#!/usr/bin/bash
+
+STATUSB1=$(acpi --battery | tail -1)
+PERCB1=$(echo $STATUSB1 | cut -d, -f2)
+NUMBER=${PERCB1%?}
+if [ $NUMBER -le 25 ]; then
+	bt="\uf243"
+elif [ $NUMBER -le 50 ]; then
+	bt="\uf242"
+elif [ $NUMBER -le 75 ]; then
+	bt="\uf241"
+elif [ $NUMBER -le 100 ]; then
+	bt="\uf240"
+fi
+if [[ $STATUS =~ "Charging" ]]; then
+	BOLT="\uf0e7"
+fi
+echo -e "$PERCB1 $bt $BOLT"

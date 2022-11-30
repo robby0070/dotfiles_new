@@ -1,0 +1,9 @@
+#!/bin/bash
+
+exec eval `ssh-agent`&
+exec sxhkd &
+exec dunst &
+exec nm-applet &
+exec apply_wallpaper &
+exec usr/bin/prime-offload &
+exec i3
